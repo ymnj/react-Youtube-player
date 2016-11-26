@@ -3,10 +3,14 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import YoutubeSearch from 'youtube-api-search'
 
+
+//Components
 import SearchBar from './components/search_bar'
 import VideoList from './components/video_list'
 import VideoDetail from './components/video_detail'
 
+//Stylesheets
+require('../style/style.scss')
 
 const API_KEY = 'AIzaSyDZvqtWbxGr2wRdfRqYLXVy102NF2MRaGE';
 

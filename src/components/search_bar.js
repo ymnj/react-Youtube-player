@@ -20,8 +20,11 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="form-group col-md-6 col-md-offset-3">
+      <div className="search-bar input-group col-md-6 col-md-offset-3">
         <input className="form-control" type="text" onChange={ this.onSearchChange }/>
+        <span className="input-group-btn">
+          <button className="btn btn-default">Search</button>
+        </span>
       </div>
     )    
   };
