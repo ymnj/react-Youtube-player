@@ -7,25 +7,35 @@ class SearchBar extends Component {
     super(props)
 
     this.state = {
-      term: ''
+      term: 'Yerin'
     };
   }; //END Constructor
 
-
   onSearchChange = (event) => {
     let term = event.target.value
+    
+    this.setState({
+      term: term
+    });
 
-    this.props.onVideoSearch(term);
+    console.log(term);
+  }
+
+
+  onSearchClick = (event) => {
+    event.preventDefault()
+    this.props.onVideoSearch(this.state.term);
+
   }
 
   render() {
     return (
-      <div className="search-bar input-group col-md-6 col-md-offset-3">
-        <input className="form-control" type="text" onChange={ this.onSearchChange }/>
+      <form className="search-bar input-group col-md-6 col-md-offset-3" onSubmit={this.onSearchClick}>
+        <input className="form-control" onChange={ this.onSearchChange }/>
         <span className="input-group-btn">
-          <button className="btn btn-default">Search</button>
+          <button type="submit" className="btn btn-default">Search</button>
         </span>
-      </div>
+      </form>
     )    
   };
 
