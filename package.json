@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ymnj/react-player.git"
+    "url": "git+https://github.com/ymnj/react-youtube-player.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ymnj/react-player/issues"
+    "url": "https://github.com/ymnj/react-youtube-player/issues"
   },
-  "homepage": "https://github.com/ymnj/react-player#readme",
+  "homepage": "https://github.com/ymnj/react-youtube-player#readme",
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
