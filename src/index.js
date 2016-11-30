@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import YoutubeSearch from 'youtube-api-search'
+import YoutubeVideo from '../node_modules/youtube-api-videos/index';
 
 
 //Components
@@ -21,7 +22,8 @@ class App extends Component {
 
     this.state = {
       videos: [],
-      selectedVideo: null
+      selectedVideo: null,
+      videoDetails: ""
     }
 
     this.onVideoSearch('Yerin');
@@ -30,10 +32,20 @@ class App extends Component {
 
 
   onVideoSelect = (video) => {
-    this.setState({
-      selectedVideo: video
-    });
-  }
+    (() => {
+      const videoId = this.state.selectedVideo.id.videoId;
+      
+      YoutubeVideo({
+        key: API_KEY,
+        id: videoId
+      }, (data) => {
+        this.setState({
+          selectedVideo: video,
+          selectedVideoDetails: data[0].snippet.description
+        })
+      });
+    })();
+  };
 
   onVideoSearch = (term) => {
     YoutubeSearch({
@@ -44,18 +56,32 @@ class App extends Component {
         videos: data,
         selectedVideo: data[0]
       });
-    })
+
+      const videoId = this.state.selectedVideo.id.videoId;
+
+      //This IIFE will make a VIDEO youtube api call in order to retrieve a full description
+      (() => {
+        YoutubeVideo({
+          key: API_KEY,
+          id: videoId
+        }, (data) => {
+          this.setState({
+            selectedVideoDetails: data[0].snippet.description
+          })
+        });
+      })(); //END of IIFE
+    }); // END of on VideoSearch
   }
 
   render() {
     return (
       <div className="container">
         <SearchBar onVideoSearch={this.onVideoSearch}/>
-        <VideoDetail video={this.state.selectedVideo} />
+        <VideoDetail video={this.state.selectedVideo} selectedVideoDetails={this.state.selectedVideoDetails}/>
         <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
       </div>
     )
-  }
+  };
 }
 
 ReactDOM.render(<App />, document.getElementById('container'));
