@@ -15,18 +15,17 @@ const VideoDetail = ({video, selectedVideoDetails}) => {
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   let uploadDate = new Date(video.snippet.publishedAt)
       uploadDate = `${uploadDate.getDate()} ${months[uploadDate.getMonth()]} ${uploadDate.getFullYear()}`
-
-
+  
   return (
     <div className="video-detail col-md-8">
       <div className="embed-responsive embed-responsive-16by9">
         <iframe id="ytplayer" className="embed-responsive-item" type="text/html" src={videoUrl} allowFullScreen></iframe>  
       </div>
       <div className="media-body panel">
-        <h4 className="media-heading">{video.snippet.title}</h4>
-        <p>Published on {uploadDate}</p>
+        <p className="media-heading">{video.snippet.title}</p>
         <p>channel: {video.snippet.channelTitle}</p>
-        {selectedVideoDetails}
+        <p>Published on {uploadDate}</p>
+        <p className="videoDescription">{selectedVideoDetails}</p>
       </div>
     </div>
   )
