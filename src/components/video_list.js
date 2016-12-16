@@ -12,7 +12,7 @@ const VideoList = ({videos, onVideoSelect}) => {
 
 
   return (
-    <div>
+    <div id="video-list-wrap">
       <ul className="video-list list-group col-md-4">  
         {videoItems}
       </ul>
