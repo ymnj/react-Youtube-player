@@ -52,6 +52,7 @@ class App extends Component {
       key: API_KEY,
       term: term
     }, (data) => {
+      console.log(data);
       this.setState({
         videos: data,
         selectedVideo: data[0]
@@ -65,6 +66,7 @@ class App extends Component {
           key: API_KEY,
           id: videoId
         }, (data) => {
+          console.log(data);
           this.setState({
             selectedVideoDetails: data[0].snippet.description
           })
