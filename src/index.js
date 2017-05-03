@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import YoutubeSearch from 'youtube-api-search'
 import YoutubeVideo from '../node_modules/youtube-api-videos/index';
 
+import {API_KEY} from './config.js'
 
 //Components
 import SearchBar from './components/search_bar'
@@ -12,8 +13,6 @@ import VideoDetail from './components/video_detail'
 
 //Stylesheets
 require('../style/style.scss')
-
-const API_KEY = 'AIzaSyDZvqtWbxGr2wRdfRqYLXVy102NF2MRaGE';
 
 class App extends Component {
   
