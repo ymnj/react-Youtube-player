@@ -9,7 +9,7 @@ In order to run this application, you will need to obtain your own YOUTUBE API k
 Once you have obtained a key.
 ```
 1. Create a new file in the src folder named config.js
-2. Past: export const API_KEY = 'YOUR KEY HERE'; 
+2. Paste: export const API_KEY = 'YOUR KEY HERE'; 
 ```
 
 #### Locally
