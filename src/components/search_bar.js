@@ -7,7 +7,7 @@ class SearchBar extends Component {
     super(props)
 
     this.state = {
-      term: 'Yerin'
+      term: ''
     };
   }; //END Constructor
 
@@ -17,15 +17,12 @@ class SearchBar extends Component {
     this.setState({
       term: term
     });
-
-    console.log(term);
   }
 
 
   onSearchClick = (event) => {
     event.preventDefault()
     this.props.onVideoSearch(this.state.term);
-
   }
 
   render() {

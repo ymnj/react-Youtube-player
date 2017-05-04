@@ -1,7 +1,16 @@
 
 .container {
-  padding-top: 10%;
-  background-color: steelblue;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .header {
+    text-align: center;
+    h1 {
+      display: inline-block;
+    }
+  }
 
   .search-bar {
     margin: 20px auto;
@@ -14,10 +23,27 @@
     }
     .panel {
       padding: 10px;
+      max-height: 315px;
     }
     .videoDescription {
       white-space: pre-line;
     }
   }
 
+}
+
+
+.fadewrap.hideDiv {
+  opacity: 0;
+}
+
+.fadewrap.showDiv {
+  transition: opacity 2000ms;
+  transition-delay: 500ms;
+  opacity: 1;
+}
+
+.container.showDiv {
+  transition: top 500ms ease;
+  top: 10%;
 }

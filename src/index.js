@@ -22,10 +22,11 @@ class App extends Component {
     this.state = {
       videos: [],
       selectedVideo: null,
-      videoDetails: ""
+      videoDetails: "",
+      show: false
     }
 
-    this.onVideoSearch('Yerin');
+    //this.onVideoSearch('Yerin');
 
   }  //END constructor
 
@@ -51,10 +52,10 @@ class App extends Component {
       key: API_KEY,
       term: term
     }, (data) => {
-      console.log(data);
       this.setState({
         videos: data,
-        selectedVideo: data[0]
+        selectedVideo: data[0],
+        show: true
       });
 
       const videoId = this.state.selectedVideo.id.videoId;
@@ -65,7 +66,6 @@ class App extends Component {
           key: API_KEY,
           id: videoId
         }, (data) => {
-          console.log(data);
           this.setState({
             selectedVideoDetails: data[0].snippet.description
           })
@@ -75,11 +75,20 @@ class App extends Component {
   }
 
   render() {
+
+    let animate = this.state.show ? 'showDiv' : 'hideDiv';
+
+
     return (
-      <div className="container">
-        <SearchBar onVideoSearch={this.onVideoSearch}/>
-        <VideoDetail video={this.state.selectedVideo} selectedVideoDetails={this.state.selectedVideoDetails}/>
-        <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
+      <div className={`container ${animate}`}>
+        <div className="header">
+          <h1>React Youtube</h1>
+        </div>
+        <SearchBar show={animate} onVideoSearch={this.onVideoSearch}/>
+        <div className={`fadewrap ${animate}`}>
+          <VideoDetail video={this.state.selectedVideo} selectedVideoDetails={this.state.selectedVideoDetails}/>
+          <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
+        </div>
       </div>
     )
   };

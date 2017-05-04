@@ -5,7 +5,7 @@ import YoutubeVideo from '../../node_modules/youtube-api-videos/index';
 const VideoDetail = ({video, selectedVideoDetails}) => {
 
   if(!video){
-    return <p>"Loading..."</p>;
+    return <p></p>;
   }
 
   const videoId = video.id.videoId;
